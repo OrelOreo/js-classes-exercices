@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        class Book {
+
+            #page = 1
+            constructor(title, pages) {
+                this.title = title
+                this.pages = pages
+            }
+
+            get page() {
+                return this.#page
+            }
+
+            nextPage() {
+                if (this.#page < this.pages) {
+                    this.#page ++
+                }
+            }
+            close() {
+                this.#page = 1
+            }
+        }
+
+        class Library extends Book {
+            #books = []
+
+            addBook(book) {
+                this.#books.push(book)
+            }
+
+            addBooks(booksToAdd) {
+                for (const book of booksToAdd) {
+                    this.#books.push(book)
+                }
+            }
+
+            findBooksByLetter(letter) {
+                const filteredBooks = this.#books.filter((b) => b.title.charAt(0) == letter)
+                return filteredBooks
+            }
+        }
+
+        const book = new Book('Seigneur des anneaux', 500)
+        console.log("🚀 ~ book:", book)
+
+        const library = new Library()
+        library.addBook(book)
+        library.addBooks([
+            new Book('Ready Player One', 100),
+            new Book('Seul sur Mars', 300)
+        ])
+        library.findBooksByLetter('S')
+        console.log("🚀 ~ library:", library)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        class Rectangle {
+            constructor(width, height) {
+                this.width = width
+                this.height = height
+            }
+
+            get perimeter() {
+                return (this.height, this.width) * 2
+            }
+
+            isValid() {
+                if (this.height <= 0 || this.width <= 0) {
+                    return false
+                }
+                return true
+            }
+
+            isBiggerThan({ width, height }) {
+                if (this.width < width || this.height < height) {
+                    return false
+                }
+                return true
+            }
+        }
+
+        class Square extends Rectangle {
+            constructor(width) {
+                super(width, width)
+            }
+        }
+
+
+        const rectangle = new Rectangle(10, 10)
+        console.log("🚀 ~ rectangle.perimeter:", rectangle.perimeter)
+        console.log("🚀 ~ rectangle.isValid:", rectangle.isValid())
+
+        const square = new Square(20)
+        console.log("🚀 ~ square:", square.perimeter)
+        console.log("🚀 ~ square.isValid:", square.isValid())
+        console.log('square.isBiggerThan(rectangle)', square.isBiggerThan(rectangle))
+        console.log('rectangle.isBiggerThan(square)', rectangle.isBiggerThan(square))
+
+    </script>
+</body>
+
+</html>
